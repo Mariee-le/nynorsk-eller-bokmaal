@@ -47,11 +47,22 @@ def målform(tekst):
    else: 
       print(f'''I dømet __{tekst}__ er der ingen tydelege markørar på verken nynorsk eller bokmål''')
 
-if __name__ == "__main__":
-     test_test = [
-          "hei, no er det nok", "vi er her idag", "De har ikkje nok pengar", "dere er ikke studenter", "dokker er ikkje studentar", "Borte bra men hjemme best", "denne jenten er snill", "nynorsk er ei nydeleg språkform synast eg"]
+# skriv inn eigne døme her:)
 
-for setning in test_test:
-  print(målform(setning))
+if __name__ == "__main__":
+    while True:
+        tekst = input("\nSkriv eit døme på bokmål eller nynorsk (skriv 'exit' for å avslutte): ").strip()
+
+        if not tekst:
+            print("Du må skrive ei setning.")
+            continue
+
+        if tekst.lower() == "exit":
+            print("Avsluttar programmet.")
+            break
+
+        målform(tekst)
+
+     
 
 
