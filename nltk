@@ -39,19 +39,19 @@ def målform(tekst):
    bokmål = tekst_vokabulær & berre_bokmål
 
    if nynorsk and not bokmål:
-      print(f'''Dømet "{tekst}" er på nynorsk :)''')
+      print(f'''Dømet __{tekst}__ er på nynorsk :)''')
    elif bokmål and not nynorsk:
-      print(f'''Dømet "{tekst}" er på bokmål :)''')
+      print(f'''Dømet __{tekst}__ er på bokmål :)''')
    elif nynorsk and bokmål:
-      print(f'''Ojsånn no blei eg usikker! Dømet "{tekst}" kan enten vere nynorsk eller bokmål''')
-  else: 
-      print(f'''I dømet {tekst} er der ingen tydelege markørar på verken nynorsk eller bokmål''')
+      print(f'''Ojsånn no blei eg usikker! Dømet __{tekst}__ kan enten vere nynorsk eller bokmål''')
+   else: 
+      print(f'''I dømet __{tekst}__ er der ingen tydelege markørar på verken nynorsk eller bokmål''')
 
 if __name__ == "__main__":
      test_test = [
           "hei, no er det nok", "vi er her idag", "De har ikkje nok pengar", "dere er ikke studenter", "dokker er ikkje studentar", "Borte bra men hjemme best", "denne jenten er snill", "nynorsk er ei nydeleg språkform synast eg"]
 
 for setning in test_test:
-  print("\nSetning:", setning)
-  print(målform(setning)
-   
+  print(målform(setning))
+
+
