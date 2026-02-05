@@ -2,7 +2,6 @@
 import nltk
 from nltk.corpus import udhr
 nltk.download("udhr")
-nltk.download("punkt")
 from nltk import word_tokenize
 
 
