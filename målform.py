@@ -3,19 +3,15 @@ import nltk
 from nltk.corpus import udhr
 nltk.download("udhr")
 from nltk import word_tokenize
+nltk.download("punkt")
 
 
 
-# last ned nynorsk- og bokmålkorpus
+# last ned nynorsk- og bokmålkorpus og del opp i ord/tokens
 
-nynorsk_tekst = udhr.raw("Norwegian_Norsk-Nynorsk-Latin1")
-bokmål_tekst = udhr.raw("Norwegian_Norsk-Bokmal-Latin1")
+nynorsk_tokens = [ord.lower() for ord in udhr.words("Norwegian_Norsk-Nynorsk-Latin1") if ord.isalpha()]
+bokmål_tokens = [ord.lower() for ord in udhr.words("Norwegian_Norsk-Bokmal-Latin1") if ord.isalpha()]
 
-
-# tokenize tekstene og gjere eventuelle store bokstavar til små bokstavar
-
-nynorsk_tokens = [ord.lower() for ord in word_tokenize(nynorsk_tekst) if ord.isalpha()]
-bokmål_tokens = [ord.lower() for ord in word_tokenize(bokmål_tekst) if ord.isalpha()]
 
 
 # finn vokabulær i tekstene på nynorsk og bokmål
@@ -35,18 +31,18 @@ berre_bokmål = bokmål_vokabulær - nynorsk_vokabulær
 
 def målform(tekst):
    # del opp døme i ord
-   tekst_vokabulær = set([ord.lower() for ord in word_tokenize(tekst) if ord.isalpha()])
-   nynorsk = tekst_vokabulær & berre_nynorsk
-   bokmål = tekst_vokabulær & berre_bokmål
+   tekst_tokens = set([ord.lower() for ord in word_tokenize(tekst) if ord.isalpha()])
 
-   if nynorsk and not bokmål:
-      print(f'''Dømet __{tekst}__ er på nynorsk :)''')
-   elif bokmål and not nynorsk:
-      print(f'''Dømet __{tekst}__ er på bokmål :)''')
-   elif nynorsk and bokmål:
-      print(f'''Ojsånn no blei eg usikker! Dømet __{tekst}__ kan enten vere nynorsk eller bokmål''')
-   else: 
-      print(f'''I dømet __{tekst}__ er der ingen tydelege markørar på verken nynorsk eller bokmål''')
+   antal_nynorsk = sum(1 for ord in tekst_tokens if ord in berre_nynorsk)
+   antal_bokmål = sum(1 for ord in tekst_tokens if ord in berre_bokmål)
+ 
+   if antal_nynorsk > antal_bokmål:
+      print(f"Dømet {tekst} er mest sannsyleg vis nynorsk :)")
+   elif antal_bokmål > antal_nynorsk:
+      print(f"Dømet {tekst} er mest sannsynleg vis bokmål :)")
+   else:
+    print(f"Eg er ikkje sikker på om dømet{tekst} er nynorsk eller bokmål :(")
+
 
 # skriv inn eigne døme her:)
 
