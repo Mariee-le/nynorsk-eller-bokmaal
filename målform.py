@@ -37,11 +37,11 @@ def målform(tekst):
    antal_bokmål = sum(1 for ord in tekst_tokens if ord in berre_bokmål)
  
    if antal_nynorsk > antal_bokmål:
-      print(f"Dømet '{tekst}' er mest sannsyleg vis nynorsk :)")
+      print(f"Dømet \n'{tekst}'\n er mest sannsyleg vis nynorsk :)")
    elif antal_bokmål > antal_nynorsk:
-      print(f"Dømet '{tekst}' er mest sannsynleg vis bokmål :)")
+      print(f"Dømet \n'{tekst}'\n er mest sannsynleg vis bokmål :)")
    else:
-    print(f"Eg er ikkje sikker på om dømet '{tekst}' er nynorsk eller bokmål :(")
+    print(f"Eg er ikkje sikker på om dømet \n'{tekst}'\n er nynorsk eller bokmål :(")
 
 
 # skriv inn eigne døme her:)
