@@ -48,13 +48,13 @@ def målform(tekst):
 
 if __name__ == "__main__":
     while True:
-        tekst = input("\nSkriv eit døme på bokmål eller nynorsk (skriv 'exit' for å avslutte): ").strip()
+        tekst = input("\nSkriv eit døme på bokmål eller nynorsk (skriv 'avslutt' for å avslutte): ").strip()
 
         if not tekst:
             print("Du må skrive ei setning.")
             continue
 
-        if tekst.lower() == "exit":
+        if tekst.lower() == "avslutt":
             print("Avsluttar programmet.")
             break
 
